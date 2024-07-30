@@ -58,7 +58,7 @@ export default function MultiSelect({
     return (
       <div
         key={tag.tagId}
-        className="cursor-pointer  text-gray-200 bg-zinc-950 text-xs flex flex-row items-stretch rounded-lg"
+        className="cursor-pointer  text-gray-200 bg-zinc-950 text-xs flex flex-row items-stretch rounded-lg shadow-md"
       >
         <div className="px-2 py-1 ">{tag.tagValue}</div>
         <div
