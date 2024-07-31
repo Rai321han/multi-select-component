@@ -166,7 +166,7 @@ export default function MultiSelect({
     const content: JSX.Element | null =
       tag.isDefault || !controlledProp.isMulti ? null : (
         <div
-          className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"
+          className=" text-[#161b22] py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"
           onClick={() => handleClickRemove(tag)}
         >
           &times;
@@ -176,11 +176,11 @@ export default function MultiSelect({
     return (
       <div
         key={tag.tagId}
-        className={`cursor-pointer  text-gray-200 ${
-          tag.isDefault ? "bg-zinc-500" : "bg-zinc-950"
-        }   text-xs flex flex-row items-stretch rounded-lg shadow-md max-w-[90px]`}
+        className={`cursor-pointer  text-[#161b22] ${
+          tag.isDefault ? "bg-zinc-500" : "bg-[#92a1b5]"
+        }   text-xs flex flex-row items-center rounded-lg shadow-md max-w-[90px]`}
       >
-        <div className="px-2 py-1 truncate">{tag.tagValue}</div>
+        <div className="px-1 py-1 truncate">{tag.tagValue}</div>
         {content}
       </div>
     );
@@ -208,7 +208,7 @@ export default function MultiSelect({
   return (
     <SelectContext.Provider value={value}>
       <div
-        className={`rounded-xl text-xs box-border border-zinc-950 solid border-2 shadow-lg`}
+        className={`rounded-xl text-xs box-border border-[#92a1b5] solid border shadow-lg`}
       >
         <div className="relative">
           <div
@@ -227,11 +227,19 @@ export default function MultiSelect({
             <div className="flex flex-row items-center gap-2 justify-center">
               <Button onClick={removeAlltags} />
               {/* <div className="py-2 border-l-2 solid border-l-gray-400"></div> */}
-              <div className=" flex flex-row items-center justify-center">
+              <div className=" flex flex-row items-center justify-center text-[#92a1b5]">
                 <span>|</span>
               </div>
               {/* <div className="cursor-pointer p-1 border-l-2 solid border-l-gray-400 border-b-2 solid border-gray-400 -rotate-45"></div> */}
-              <img src={angle} className="w-5 p-1 " alt="angle-down" />
+              <svg
+                className="w-[15px] h-[15px] fill-slate-300"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                data-name="Layer 1"
+                viewBox="0 0 24 24"
+              >
+                <path d="m12,18c-.4,0-.777-.156-1.061-.439L.112,6.733l.707-.707,10.827,10.827c.189.189.518.189.707,0l10.827-10.827.707.707-10.827,10.827c-.283.283-.66.439-1.061.439Z" />
+              </svg>
             </div>
           </div>
 

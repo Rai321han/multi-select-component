@@ -12,11 +12,11 @@ export type Tag = {
 
 const controlledProp = {
   limit: 10,
-  default: ["default1", "default3", "default4"],
+  // default: ["default1", "default3", "default4"],
   textSize: "10px",
-  isMulti: false,
+  isMulti: true,
   placeholder: "tag:",
-  isCreateable: false,
+  isCreateable: true,
 };
 
 function App() {

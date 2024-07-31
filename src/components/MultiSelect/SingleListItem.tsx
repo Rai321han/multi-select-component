@@ -15,7 +15,7 @@ export default function SingleListItem({
     <li
       tabIndex={0}
       key={option.id}
-      className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50 focus:bg-zinc-800 truncate ..."
+      className="px-4 py-1 cursor-pointer bg-[#0d1117] hover:bg-[#171d27] text-slate-200 hover:text-slate-50 focus:bg-zinc-800 truncate ..."
       onClick={() => {
         onClick(option);
       }}
