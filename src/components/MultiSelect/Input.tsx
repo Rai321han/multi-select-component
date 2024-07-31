@@ -1,28 +1,21 @@
-import { Option } from "../../constants";
-
-type InputProps = {
-  inputText: string;
-  setInputText: React.Dispatch<React.SetStateAction<string>>;
-  handleSelectOption: (option: Option) => void;
-  searchText: string;
-};
-
+import { useContext } from "react";
+import { SelectContext } from "./MultiSelect";
 import { CreateAbleObject } from "./utils";
 
-export default function Input({
-  inputText,
-  setInputText,
-  handleSelectOption,
-  searchText,
-}: InputProps) {
+export default function Input() {
+  const context = useContext(SelectContext);
+
   return (
     <input
       type="text"
       className="text-sm w-[20px] flex flex-grow outline-none px-1"
-      value={inputText}
-      onChange={(e) => setInputText(e.target.value)}
+      value={context?.inputText}
+      onChange={(e) => context?.setInputText(e.target.value)}
       onKeyDown={(e) => {
-        if (e.key === "Enter") handleSelectOption(CreateAbleObject(searchText));
+        if (e.key === "Enter") {
+          if (context?.inputText !== "")
+            context?.handleSelectOption(CreateAbleObject(context?.inputText));
+        }
       }}
     />
   );

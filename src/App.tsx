@@ -1,18 +1,31 @@
 import { useState } from "react";
 import MultiSelect from "./components/MultiSelect/MultiSelect";
-import { options } from "./constants";
+
+const options: string[] = ["first", "second", "third", "frouth"];
 
 export type Tag = {
   tagId: number | string;
   tagValue: string;
   isCustom: boolean;
+  isDefault: boolean;
+};
+
+const controlledProp = {
+  limit: 5,
+  default: ["default1", "default3"],
 };
 
 function App() {
   const [tags, setTags] = useState<Tag[]>([]);
+
   return (
     <div className="p-10">
-      <MultiSelect options={options} tags={tags} setTags={setTags} />
+      <MultiSelect
+        options={options}
+        tags={tags}
+        setTags={setTags}
+        controlledProp={controlledProp}
+      />
     </div>
   );
 }

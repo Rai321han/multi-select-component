@@ -1,38 +1,36 @@
-import { Option } from "../../constants";
+import { useContext } from "react";
+
 import { CreateAbleObject } from "./utils";
+import { SelectContext } from "./MultiSelect";
 
-type OptionsListProps = {
-  searchText: string;
-  optionsList: Option[];
-  handleSelectOption: (option: Option) => void;
-};
+export default function OptionsListItems() {
+  const context = useContext(SelectContext);
 
-export default function OptionsListItems({
-  searchText,
-  optionsList,
-  handleSelectOption,
-}: OptionsListProps) {
   const renderedOptions: JSX.Element[] = [];
-  optionsList.forEach((option) => {
-    if (searchText === "")
+  context?.optionsList.forEach((option) => {
+    if (context?.inputText === "")
       renderedOptions.push(
         <li
+          tabIndex={0}
           key={option.id}
-          className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50"
+          className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50 focus:bg-zinc-800"
           onClick={() => {
-            handleSelectOption(option);
+            context?.handleSelectOption(option);
           }}
         >
           {option.value}
         </li>
       );
-    else if (option.value.toLowerCase().startsWith(searchText.toLowerCase())) {
+    else if (
+      option.value.toLowerCase().startsWith(context.inputText.toLowerCase())
+    ) {
       renderedOptions.push(
         <li
+          tabIndex={0}
           key={option.id}
-          className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50"
+          className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50 focus:bg-zinc-800"
           onClick={() => {
-            handleSelectOption(option);
+            context.handleSelectOption(option);
           }}
         >
           {option.value}
@@ -41,14 +39,16 @@ export default function OptionsListItems({
     }
   });
 
-  if (renderedOptions.length === 0 && searchText !== "") {
-    const createableOption = CreateAbleObject(searchText);
+  if (renderedOptions.length === 0 && context?.inputText !== "") {
+    if (!context?.inputText) return;
+    const createableOption = CreateAbleObject(context?.inputText);
     renderedOptions.push(
       <li
+        tabIndex={0}
         key={createableOption.id}
-        className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50"
+        className="px-4 py-1 cursor-pointer hover:bg-zinc-800 hover:text-slate-50  focus:bg-zinc-800"
         onClick={() => {
-          handleSelectOption(createableOption);
+          context.handleSelectOption(createableOption);
         }}
       >
         <span className="text-slate-400">select&nbsp;</span>
@@ -57,11 +57,18 @@ export default function OptionsListItems({
     );
   } else if (renderedOptions.length === 0) {
     renderedOptions.push(
-      <li className="px-4 py-1 cursor-pointer hover:text-slate-50 text-center">
+      <li
+        tabIndex={0}
+        className="px-4 py-1 cursor-pointer hover:text-slate-50 text-center focus:bg-zinc-800"
+      >
         <span className="text-slate-400 ">No options</span>
       </li>
     );
   }
 
-  return <ul className="bg-slate-50">{renderedOptions}</ul>;
+  return (
+    <ul tabIndex={0} className="bg-slate-50">
+      {renderedOptions}
+    </ul>
+  );
 }
