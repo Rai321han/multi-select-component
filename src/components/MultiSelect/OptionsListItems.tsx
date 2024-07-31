@@ -1,4 +1,5 @@
 import { Option } from "../../constants";
+import { CreateAbleObject } from "./utils";
 
 type OptionsListProps = {
   searchText: string;
@@ -40,12 +41,8 @@ export default function OptionsListItems({
     }
   });
 
-  if (renderedOptions.length === 0) {
-    const createableOption = {
-      id: Date.now(),
-      value: searchText,
-      isCustom: true,
-    };
+  if (renderedOptions.length === 0 && searchText !== "") {
+    const createableOption = CreateAbleObject(searchText);
     renderedOptions.push(
       <li
         key={createableOption.id}
@@ -56,6 +53,12 @@ export default function OptionsListItems({
       >
         <span className="text-slate-400">select&nbsp;</span>
         {createableOption.value}
+      </li>
+    );
+  } else if (renderedOptions.length === 0) {
+    renderedOptions.push(
+      <li className="px-4 py-1 cursor-pointer hover:text-slate-50 text-center">
+        <span className="text-slate-400 ">No options</span>
       </li>
     );
   }

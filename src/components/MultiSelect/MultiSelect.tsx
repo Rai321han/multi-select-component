@@ -110,7 +110,12 @@ export default function MultiSelect({
           <div className="  flex-1 flex flex-row flex-wrap items-center gap-1">
             {placeHolderTag}
             {tags.length ? renderedTags : ""}
-            <Input setInputText={setInputText} inputText={inputText} />
+            <Input
+              setInputText={setInputText}
+              inputText={inputText}
+              handleSelectOption={handleSelectOption}
+              searchText={inputText}
+            />
           </div>
 
           <div className="flex flex-row items-center gap-2 justify-center">
