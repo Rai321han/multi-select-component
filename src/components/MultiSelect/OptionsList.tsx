@@ -2,6 +2,7 @@ import OptionsListItems from "./OptionsListItems";
 import { Option } from "../../constants";
 
 type OptionsListProps = {
+  searchText: string;
   isOpen: boolean;
   handleClickOpen: () => void;
   optionsList: Option[];
@@ -9,6 +10,7 @@ type OptionsListProps = {
 };
 
 export default function OptionsList({
+  searchText,
   isOpen,
   handleClickOpen,
   optionsList,
@@ -25,6 +27,7 @@ export default function OptionsList({
       <OptionsListItems
         optionsList={optionsList}
         handleSelectOption={handleSelectOption}
+        searchText={searchText}
       />
     </div>
   );
