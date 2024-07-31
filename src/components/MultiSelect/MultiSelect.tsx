@@ -4,7 +4,6 @@ import OptionsList from "./OptionsList";
 import Input from "./Input";
 import Button from "./Button";
 import { Tag } from "../../App";
-import angle from "./assets/angle-down.svg";
 
 import { createContext } from "react";
 
