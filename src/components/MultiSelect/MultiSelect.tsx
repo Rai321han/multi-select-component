@@ -34,6 +34,8 @@ type controlledPropType = {
   isSingleClearable?: boolean;
   isSearchable?: boolean;
   // color properties
+  placeholder?: string;
+  textSize?: string;
   bgColor?: string;
   borderColor?: string;
   optionColor?: string;
@@ -62,14 +64,16 @@ export default function MultiSelect({
   const optionsCollection: Option[] = [];
   const defaultSelected: Tag[] = [];
 
-  controlledProp.default?.forEach((option) => {
-    defaultSelected.push({
-      tagId: optionId++,
-      tagValue: option,
-      isCustom: false,
-      isDefault: true,
+  if (controlledProp.isMulti) {
+    controlledProp.default?.forEach((option) => {
+      defaultSelected.push({
+        tagId: optionId++,
+        tagValue: option,
+        isCustom: false,
+        isDefault: true,
+      });
     });
-  });
+  }
 
   useEffect(() => {
     const updatedTags = [...tags, ...defaultSelected];
@@ -89,6 +93,8 @@ export default function MultiSelect({
   const [inputText, setInputText] = useState("");
 
   const handleSelectOption = function (option: Option) {
+    if (!controlledProp.isMulti && tags.length === 1) return;
+
     if (tags.length === controlledProp.limit) {
       return;
     }
@@ -150,30 +156,31 @@ export default function MultiSelect({
   };
 
   const placeHolderTag = (
-    <div className=" text-gray-200 bg-zinc-500 text-[10px] flex flex-row items-stretch rounded-lg shadow-md">
-      <div className="px-2 py-1 ">tags:</div>
+    <div className=" text-gray-200 bg-zinc-500 flex flex-row items-stretch rounded-lg shadow-md">
+      <div className="px-2 py-1 ">{controlledProp.placeholder}</div>
       {/* <div className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"></div> */}
     </div>
   );
 
   const renderedTags = tags.map((tag) => {
-    const content: JSX.Element | null = tag.isDefault ? null : (
-      <div
-        className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"
-        onClick={() => handleClickRemove(tag)}
-      >
-        &times;
-      </div>
-    );
+    const content: JSX.Element | null =
+      tag.isDefault || !controlledProp.isMulti ? null : (
+        <div
+          className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"
+          onClick={() => handleClickRemove(tag)}
+        >
+          &times;
+        </div>
+      );
 
     return (
       <div
         key={tag.tagId}
         className={`cursor-pointer  text-gray-200 ${
           tag.isDefault ? "bg-zinc-500" : "bg-zinc-950"
-        }   text-xs flex flex-row items-stretch rounded-lg shadow-md`}
+        }   text-xs flex flex-row items-stretch rounded-lg shadow-md max-w-[90px]`}
       >
-        <div className="px-2 py-1 ">{tag.tagValue}</div>
+        <div className="px-2 py-1 truncate">{tag.tagValue}</div>
         {content}
       </div>
     );
@@ -200,22 +207,21 @@ export default function MultiSelect({
 
   return (
     <SelectContext.Provider value={value}>
-      <div className="rounded-xl w-[200px] text-xs box-border border-zinc-950 solid border-2">
+      <div
+        className={`rounded-xl text-xs box-border border-zinc-950 solid border-2 shadow-lg`}
+      >
         <div className="relative">
           <div
             tabIndex={0}
             onClick={handleClickOpen}
-            className="flex flex-row px-1 py-1"
+            className="flex flex-row px-1.5 py-1 w-[200px]  justify-between"
           >
-            <div className="  flex-1 flex flex-row flex-wrap items-center gap-1">
+            <div
+              className={`flex-1 flex text-xs flex-row  flex-wrap items-center gap-1 max-w-[100%]`}
+            >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
-              <Input
-              // setInputText={setInputText}
-              // inputText={inputText}
-              // handleSelectOption={handleSelectOption}
-              // searchText={inputText}
-              />
+              <Input />
             </div>
 
             <div className="flex flex-row items-center gap-2 justify-center">

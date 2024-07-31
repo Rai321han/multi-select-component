@@ -8,7 +8,11 @@ export default function Input() {
   return (
     <input
       type="text"
-      className="text-sm w-[20px] flex flex-grow outline-none px-1"
+      className={`text-sm w-[20px] flex flex-grow outline-none px-1  ${
+        context?.controlledProp.bgColor
+          ? context?.controlledProp.bgColor
+          : "bg-transparent"
+      }`}
       value={context?.inputText}
       onChange={(e) => context?.setInputText(e.target.value)}
       onKeyDown={(e) => {
