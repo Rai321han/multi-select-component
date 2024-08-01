@@ -4,7 +4,7 @@ import OptionsList from "./OptionsList";
 import Input from "./Input";
 import Button from "./Button";
 import { Tag } from "../../App";
-
+import { Style } from "./style";
 import { createContext } from "react";
 
 type ContextType = {
@@ -35,14 +35,22 @@ type controlledPropType = {
   // color properties
   placeholder?: string;
   textSize?: string;
-  bgColor?: string;
+  textColor?: string;
+  selectedTextColor?: string;
+  bgColorInput?: string;
+  bgColorOption?: string;
   borderColor?: string;
-  optionColor?: string;
+  inputBorderSize?: string;
+  optionBorderSize?: string;
+  optionListColor?: string;
   optionHoverColor?: string;
   selectedBgColor?: string;
   selectedClearColor?: string;
   individualRemoveColor?: string;
-  clearAllColor?: string;
+  inputBtnColor?: string;
+  inputTextColor?: string;
+  optionBorderColor?: string;
+  optionHoverTextColor?: string;
 };
 
 type MultiSelectProps = {
@@ -152,20 +160,32 @@ export default function MultiSelect({
 
     const updatedTags = tags.filter((tag) => tag.isDefault === true);
     setTags(updatedTags);
+    setInputText("");
   };
 
-  const placeHolderTag = (
-    <div className=" text-gray-200 bg-zinc-500 flex flex-row items-stretch rounded-lg shadow-md">
-      <div className="px-2 py-1 ">{controlledProp.placeholder}</div>
-      {/* <div className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"></div> */}
-    </div>
-  );
+  let placeHolderTag: JSX.Element | null;
+
+  if (!controlledProp.placeholder) placeHolderTag = null;
+  else {
+    placeHolderTag = (
+      <div
+        className={`${controlledProp.textColor || Style.textColor} 
+        ${controlledProp.selectedBgColor || Style.selectedBgColor} 
+        flex flex-row items-stretch rounded-lg shadow-md`}
+      >
+        <div className="px-2 py-1">{controlledProp.placeholder}</div>
+        {/* <div className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"></div> */}
+      </div>
+    );
+  }
 
   const renderedTags = tags.map((tag) => {
     const content: JSX.Element | null =
       tag.isDefault || !controlledProp.isMulti ? null : (
         <div
-          className=" text-[#161b22] py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"
+          className={`${
+            controlledProp.selectedTextColor || Style.selectedTextColor
+          } py-1 pr-2 place-items-stretch rounded-r-lg`}
           onClick={() => handleClickRemove(tag)}
         >
           &times;
@@ -175,11 +195,13 @@ export default function MultiSelect({
     return (
       <div
         key={tag.tagId}
-        className={`cursor-pointer  text-[#161b22] ${
-          tag.isDefault ? "bg-zinc-500" : "bg-[#92a1b5]"
-        }   text-xs flex flex-row items-center rounded-lg shadow-md max-w-[90px]`}
+        className={`cursor-pointer  ${
+          controlledProp.selectedTextColor || Style.selectedTextColor
+        } ${controlledProp.selectedBgColor || Style.selectedBgColor} ${
+          controlledProp.selectedTextColor || Style.selectedTextColor
+        } flex flex-row items-center rounded-[10px] shadow-md max-w-[90px]`}
       >
-        <div className="px-1 py-1 truncate">{tag.tagValue}</div>
+        <div className="px-2  py-1 truncate ">{tag.tagValue}</div>
         {content}
       </div>
     );
@@ -207,16 +229,24 @@ export default function MultiSelect({
   return (
     <SelectContext.Provider value={value}>
       <div
-        className={`rounded-xl text-xs box-border border-[#92a1b5] solid border shadow-lg`}
+        className={`rounded-[15px] text-xs ${
+          controlledProp.borderColor || Style.borderColor
+        }  solid ${
+          controlledProp.inputBorderSize || Style.inputBorderSize
+        } shadow-xl  font-poppins`}
       >
-        <div className="relative">
+        <div className="relative tracking-wide">
           <div
             tabIndex={0}
             onClick={handleClickOpen}
-            className="flex flex-row px-1.5 py-1 w-[200px]  justify-between"
+            className={`${
+              controlledProp.bgColorInput || Style.bgColorInput
+            } flex flex-row px-1.5 py-1.5 w-[200px]  justify-between rounded-[15px]`}
           >
             <div
-              className={`flex-1 flex text-xs flex-row  flex-wrap items-center gap-1 max-w-[100%]`}
+              className={`flex-1 flex ${
+                controlledProp.textSize || Style.textSize
+              } flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
             >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
@@ -226,12 +256,18 @@ export default function MultiSelect({
             <div className="flex flex-row items-center gap-2 justify-center">
               <Button onClick={removeAlltags} />
               {/* <div className="py-2 border-l-2 solid border-l-gray-400"></div> */}
-              <div className=" flex flex-row items-center justify-center text-[#92a1b5]">
+              <div
+                className={`flex flex-row items-center justify-center ${
+                  controlledProp.textColor || Style.textColor
+                }`}
+              >
                 <span>|</span>
               </div>
               {/* <div className="cursor-pointer p-1 border-l-2 solid border-l-gray-400 border-b-2 solid border-gray-400 -rotate-45"></div> */}
               <svg
-                className="w-[15px] h-[15px] fill-slate-300"
+                className={`w-[15px] h-[15px] ${
+                  controlledProp.inputBtnColor || Style.inputBtnColor
+                } `}
                 xmlns="http://www.w3.org/2000/svg"
                 id="Layer_1"
                 data-name="Layer 1"

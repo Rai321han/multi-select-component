@@ -41,7 +41,7 @@ export default function OptionsListItems() {
   }
 
   return (
-    <ul tabIndex={0} className="bg-slate-50">
+    <ul tabIndex={0} className="px-5 tracking-wide">
       {renderedOptions}
     </ul>
   );

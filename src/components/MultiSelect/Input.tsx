@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SelectContext } from "./MultiSelect";
 import { CreateAbleObject } from "./utils";
+import { Style } from "./style";
 
 export default function Input() {
   const context = useContext(SelectContext);
@@ -8,11 +9,9 @@ export default function Input() {
   return (
     <input
       type="text"
-      className={`text-sm w-[20px] flex flex-grow outline-none px-1  ${
-        context?.controlledProp.bgColor
-          ? context?.controlledProp.bgColor
-          : "bg-transparent"
-      }`}
+      className={`w-[20px] flex flex-grow outline-none px-1 bg-transparent text-[${
+        context?.controlledProp.inputTextColor || Style.inputTextColor
+      }] tracking-wide`}
       value={context?.inputText}
       onChange={(e) => context?.setInputText(e.target.value)}
       onKeyDown={(e) => {
