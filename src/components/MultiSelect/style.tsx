@@ -17,6 +17,7 @@ type StyleType = {
   inputTextColor: string;
   optionBorderColor: string;
   optionHoverTextColor: string;
+  defaultBgColor: string;
 };
 
 export const Style: StyleType = {
@@ -38,4 +39,5 @@ export const Style: StyleType = {
   inputBtnColor: "white", //cannot be tailwind color class
   inputTextColor: "#ffffff", //cannot be tailwind color class
   optionBorderColor: "bg-gray-600",
+  defaultBgColor: "bg-gray-700",
 };

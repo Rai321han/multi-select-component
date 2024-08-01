@@ -53,6 +53,7 @@ type controlledPropType = {
   inputTextColor?: string;
   optionBorderColor?: string;
   optionHoverTextColor?: string;
+  defaultBgColor?: string;
 };
 
 type MultiSelectProps = {
@@ -189,13 +190,15 @@ export default function MultiSelect({
     const content: JSX.Element | null =
       tag.isDefault || !controlledProp.isMulti ? null : (
         <div
-          className={`${
+          className={`text-[${
             controlledProp.selectedTextColor || Style.selectedTextColor
-          } py-1 pr-1 place-items-stretch rounded-r-lg flex items-stretch`}
+          }] hover:bg-[${
+            controlledProp.selectedClearColor || Style.selectedClearColor
+          }] py-1 px-1 place-items-stretch rounded-r-lg flex items-center`}
           onClick={() => handleClickRemove(tag)}
         >
           <svg
-            className={`w-2 h-1.5`}
+            className={`w-1.5 h-1.5`}
             viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +208,7 @@ export default function MultiSelect({
               clip-rule="evenodd"
               d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
               fill={`${
-                controlledProp.selectedClearColor || Style.selectedClearColor
+                controlledProp.selectedTextColor || Style.selectedTextColor
               } `}
             />
           </svg>
@@ -217,14 +220,18 @@ export default function MultiSelect({
         key={tag.tagId}
         className={`cursor-pointer  ${
           controlledProp.selectedTextColor || Style.selectedTextColor
-        } ${controlledProp.selectedBgColor || Style.selectedBgColor} ${
+        } ${
+          tag.isDefault
+            ? controlledProp.defaultBgColor || Style.defaultBgColor
+            : controlledProp.selectedBgColor || Style.selectedBgColor
+        } ${
           controlledProp.selectedTextColor || Style.selectedTextColor
-        } flex flex-row items-center rounded-[10px] shadow-md max-w-[90px]`}
+        } flex flex-row rounded-[10px] shadow-lg max-w-[90px] items-stretch`}
       >
         <div
           className={`text-[${controlledProp.textSize || Style.textSize}] ${
-            tag.isDefault ? "px-2" : "pl-1"
-          } py-0/5 truncate ...`}
+            tag.isDefault ? "px-2" : "pr-1 pl-2"
+          } py-1 truncate ...`}
         >
           {tag.tagValue}
         </div>
@@ -259,7 +266,7 @@ export default function MultiSelect({
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl font-poppins w-[100%] sm:w-[300px] max-w-[300px]`}
+        } shadow-xl font-poppins w-[100%] sm:w-[200px] max-w-[200px]`}
       >
         <div className="relative tracking-wide w-[100%]">
           <div
@@ -267,7 +274,7 @@ export default function MultiSelect({
             onClick={handleClickOpen}
             className={`${
               controlledProp.bgColorInput || Style.bgColorInput
-            } flex flex-row px-1.5 py-1 max-w-[100%]  justify-between rounded-[15px]`}
+            } flex flex-row px-1.5 py-1.5 max-w-[100%]  justify-between rounded-[15px]`}
           >
             <div
               className={`flex-1 flex text-[${
