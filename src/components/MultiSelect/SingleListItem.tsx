@@ -25,8 +25,10 @@ export default function SingleListItem({
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
       }]  border-b-[${
         userStyle?.optionBorderColor || Style.optionBorderColor
-      }]  py-2 cursor-pointer
-      ${userStyle?.textColor || Style.textColor} truncate ...`}
+      }]  py-1 cursor-pointer
+      ${userStyle?.textColor || Style.textColor} truncate ... text-[${
+        userStyle?.textSize || Style.textSize
+      }]`}
       onClick={() => {
         onClick(option);
       }}

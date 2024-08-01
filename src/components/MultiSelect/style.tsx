@@ -1,4 +1,5 @@
 type StyleType = {
+  width: string;
   textSize: string;
   textColor: string;
   bgColorInput: string;
@@ -19,7 +20,8 @@ type StyleType = {
 };
 
 export const Style: StyleType = {
-  textSize: "text-xs",
+  width: "150px",
+  textSize: "2px",
   textColor: "text-[#A5A9B5]",
   bgColorInput: "bg-gray-200",
   bgColorOption: "bg-gray-200",
@@ -28,12 +30,12 @@ export const Style: StyleType = {
   optionBorderSize: "border",
   optionListColor: "bg-gray-200",
   optionHoverColor: "bg-black",
-  optionHoverTextColor: "#ffffff",
+  optionHoverTextColor: "text-white",
   selectedBgColor: "bg-gray-600",
   selectedTextColor: "text-gray-900",
-  selectedClearColor: "bg-gray-400",
+  selectedClearColor: "#000000", //cannot be tailwind color class
   individualRemoveColor: "bg-gray-600",
-  inputBtnColor: "fill-gray-200",
-  inputTextColor: "#ffffff",
+  inputBtnColor: "white", //cannot be tailwind color class
+  inputTextColor: "#ffffff", //cannot be tailwind color class
   optionBorderColor: "bg-gray-600",
 };

@@ -23,9 +23,10 @@ export type Tag = {
 };
 
 const controlledProp = {
+  width: "200px",
   limit: 10,
-  default: ["default"],
-  textSize: "10px",
+  // default: ["default"],
+  textSize: "0.5rem",
   isMulti: true,
   // placeholder: "tag:",
   isCreateable: true,
@@ -39,12 +40,14 @@ const controlledProp = {
   optionBorderSize: "border",
   optionBorderColor: "#5f6269ed",
   optionHoverTextColor: "#ffffff",
+  selectedClearColor: "#232426",
+  inputBtnColor: "#A5A9B5",
 };
 
 function App() {
   const [tags, setTags] = useState<Tag[]>([]);
   return (
-    <div className="p-10">
+    <div className="p-3 flex justify-center items-center">
       <MultiSelect
         options={options}
         tags={tags}

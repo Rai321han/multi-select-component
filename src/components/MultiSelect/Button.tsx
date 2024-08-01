@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { SelectContext } from "./MultiSelect";
+import { Style } from "./style";
+
 export default function Button({
   onClick,
   className,
@@ -5,22 +9,28 @@ export default function Button({
   onClick: () => void;
   className?: string;
 }) {
+  const context = useContext(SelectContext);
   return (
     <button
       onClick={onClick}
       className={`text-xl text-gray-400 hover:text-gray-700 ${className}`}
     >
       {/* &times; */}
+
       <svg
-        className="w-[10px] h-[10px] fill-slate-300"
+        className={`w-3 h-2`}
+        viewBox="0 0 14 14"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        id="Layer_1"
-        data-name="Layer 1"
-        viewBox="0 0 24 24"
-        width="512"
-        height="512"
       >
-        <polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
+          fill={`${
+            context?.controlledProp.inputBtnColor || Style.inputBtnColor
+          } `}
+        />
       </svg>
     </button>
   );

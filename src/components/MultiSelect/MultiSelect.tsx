@@ -34,6 +34,7 @@ type controlledPropType = {
   isSingleClearable?: boolean;
   isSearchable?: boolean;
   // color properties
+  width?: string;
   placeholder?: string;
   textSize?: string;
   textColor?: string;
@@ -174,7 +175,11 @@ export default function MultiSelect({
         ${controlledProp.selectedBgColor || Style.selectedBgColor} 
         flex flex-row items-stretch rounded-lg shadow-md`}
       >
-        <div className="px-2 py-1">{controlledProp.placeholder}</div>
+        <div
+          className={`px-2 py-1 ${controlledProp.textSize || Style.textSize}`}
+        >
+          {controlledProp.placeholder}
+        </div>
         {/* <div className=" text-gray-400 py-1 hover:text-gray-700  hover:bg-red-300 px-1 place-items-stretch rounded-r-lg"></div> */}
       </div>
     );
@@ -186,10 +191,24 @@ export default function MultiSelect({
         <div
           className={`${
             controlledProp.selectedTextColor || Style.selectedTextColor
-          } py-1 pr-2 place-items-stretch rounded-r-lg`}
+          } py-1 pr-1 place-items-stretch rounded-r-lg flex items-stretch`}
           onClick={() => handleClickRemove(tag)}
         >
-          &times;
+          <svg
+            className={`w-2 h-1.5`}
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
+              fill={`${
+                controlledProp.selectedClearColor || Style.selectedClearColor
+              } `}
+            />
+          </svg>
         </div>
       );
 
@@ -202,7 +221,13 @@ export default function MultiSelect({
           controlledProp.selectedTextColor || Style.selectedTextColor
         } flex flex-row items-center rounded-[10px] shadow-md max-w-[90px]`}
       >
-        <div className="px-2  py-1 truncate ">{tag.tagValue}</div>
+        <div
+          className={`text-[${controlledProp.textSize || Style.textSize}] ${
+            tag.isDefault ? "px-2" : "pl-1"
+          } py-0/5 truncate ...`}
+        >
+          {tag.tagValue}
+        </div>
         {content}
       </div>
     );
@@ -234,27 +259,27 @@ export default function MultiSelect({
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl  font-poppins`}
+        } shadow-xl font-poppins w-[100%] sm:w-[300px] max-w-[300px]`}
       >
-        <div className="relative tracking-wide">
+        <div className="relative tracking-wide w-[100%]">
           <div
             tabIndex={0}
             onClick={handleClickOpen}
             className={`${
               controlledProp.bgColorInput || Style.bgColorInput
-            } flex flex-row px-1.5 py-1.5 w-[200px]  justify-between rounded-[15px]`}
+            } flex flex-row px-1.5 py-1 max-w-[100%]  justify-between rounded-[15px]`}
           >
             <div
-              className={`flex-1 flex ${
+              className={`flex-1 flex text-[${
                 controlledProp.textSize || Style.textSize
-              } flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
+              }] flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
             >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
               <Input />
             </div>
 
-            <div className="flex flex-row items-center gap-2 justify-center">
+            <div className="flex flex-row items-center gap-[0.3em] justify-center">
               <Button onClick={removeAlltags} />
               {/* <div className="py-2 border-l-2 solid border-l-gray-400"></div> */}
               <div
@@ -262,19 +287,38 @@ export default function MultiSelect({
                   controlledProp.textColor || Style.textColor
                 }`}
               >
-                <span>|</span>
+                <svg
+                  className={`min-w-fit h-4 text-center`}
+                  viewBox="0 0 3 31"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.912842 31V0H2.91284V31H0.912842Z"
+                    fill={`${
+                      controlledProp.inputBtnColor || Style.inputBtnColor
+                    } `}
+                  />
+                </svg>
               </div>
               {/* <div className="cursor-pointer p-1 border-l-2 solid border-l-gray-400 border-b-2 solid border-gray-400 -rotate-45"></div> */}
+
               <svg
-                className={`w-[15px] h-[15px] ${
-                  controlledProp.inputBtnColor || Style.inputBtnColor
-                } `}
+                className={`mr-1 w-[12px] h-[10px]`}
+                viewBox="0 0 18 11"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                id="Layer_1"
-                data-name="Layer 1"
-                viewBox="0 0 24 24"
               >
-                <path d="m12,18c-.4,0-.777-.156-1.061-.439L.112,6.733l.707-.707,10.827,10.827c.189.189.518.189.707,0l10.827-10.827.707.707-10.827,10.827c-.283.283-.66.439-1.061.439Z" />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.205811 1.70718L1.62002 0.292969L8.91292 7.58586L16.2058 0.292969L17.62 1.70718L8.91292 10.4143L0.205811 1.70718Z"
+                  fill={`${
+                    controlledProp.inputBtnColor || Style.inputBtnColor
+                  } `}
+                />
               </svg>
             </div>
           </div>
