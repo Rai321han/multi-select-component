@@ -11,13 +11,21 @@ export default function OptionsListItems() {
   context?.optionsList.forEach((option) => {
     if (context?.inputText === "")
       renderedOptions.push(
-        <SingleListItem option={option} onClick={context.handleSelectOption} />
+        <SingleListItem
+          option={option}
+          onClick={context.handleSelectOption}
+          key={option.id}
+        />
       );
     else if (
       option.value.toLowerCase().startsWith(context.inputText.toLowerCase())
     ) {
       renderedOptions.push(
-        <SingleListItem option={option} onClick={context.handleSelectOption} />
+        <SingleListItem
+          option={option}
+          onClick={context.handleSelectOption}
+          key={option.id}
+        />
       );
     }
   });
@@ -34,6 +42,7 @@ export default function OptionsListItems() {
         option={createableOption}
         onClick={context.handleSelectOption}
         noOption={true}
+        key={createableOption.id}
       />
     );
   } else if (renderedOptions.length === 0) {
