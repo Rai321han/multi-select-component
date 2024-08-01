@@ -10,7 +10,9 @@ export default function Input() {
     <input
       type="text"
       className={`w-[20px] flex flex-grow outline-none px-1 bg-transparent text-[${
-        context?.controlledProp.inputTextColor || Style.inputTextColor
+        context?.controlledProp.inputTextColor ||
+        Style.inputTextColor ||
+        "#ffffff"
       }] tracking-wide`}
       value={context?.inputText}
       onChange={(e) => context?.setInputText(e.target.value)}

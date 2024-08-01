@@ -50,7 +50,7 @@ export default function OptionsListItems() {
   }
 
   return (
-    <ul tabIndex={0} className=" px-5 tracking-wide listParent">
+    <ul tabIndex={0} className=" px-5 py-[0.1rem] tracking-wide listParent">
       {renderedOptions}
     </ul>
   );

@@ -25,7 +25,7 @@ export default function SingleListItem({
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
       }]  border-b-[${
         userStyle?.optionBorderColor || Style.optionBorderColor
-      }]  py-[0.25rem] cursor-pointer
+      }]  py-[0.35rem] cursor-pointer
       ${userStyle?.textColor || Style.textColor} truncate ... text-[${
         userStyle?.textSize || Style.textSize
       }]`}
