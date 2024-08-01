@@ -1,7 +1,19 @@
 import { useState } from "react";
 import MultiSelect from "./components/MultiSelect/MultiSelect";
 
-const options: string[] = ["first", "second", "third", "frouth"];
+const options: string[] = [
+  "JavaScript",
+  "React",
+  "CSS",
+  "Angular",
+  "TypeScript",
+  "Vue",
+  "Jest",
+  "HTML",
+  "SCSS",
+  "Vite",
+  "Testing",
+];
 
 export type Tag = {
   tagId: number | string;

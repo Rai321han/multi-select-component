@@ -23,14 +23,10 @@ export default function SingleListItem({
       key={option.id}
       className={`tracking-wide hover:text-[${
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
-      }] solid border-b-[0.01px] border-b-[${
+      }]  border-b-[${
         userStyle?.optionBorderColor || Style.optionBorderColor
-      }] py-2 cursor-pointer hover:${
-        userStyle?.optionHoverColor || Style.optionHoverColor
-      } 
-      ${userStyle?.textColor || Style.textColor} hover:${
-        userStyle?.textColor || Style.textColor
-      } truncate ...`}
+      }]  py-2 cursor-pointer
+      ${userStyle?.textColor || Style.textColor} truncate ...`}
       onClick={() => {
         onClick(option);
       }}

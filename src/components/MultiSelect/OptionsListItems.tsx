@@ -50,7 +50,7 @@ export default function OptionsListItems() {
   }
 
   return (
-    <ul tabIndex={0} className="px-5 tracking-wide">
+    <ul tabIndex={0} className=" px-5 tracking-wide listParent">
       {renderedOptions}
     </ul>
   );

@@ -6,6 +6,7 @@ import Button from "./Button";
 import { Tag } from "../../App";
 import { Style } from "./style";
 import { createContext } from "react";
+import "./style.css";
 
 type ContextType = {
   options: string[];
