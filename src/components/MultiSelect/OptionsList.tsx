@@ -1,13 +1,24 @@
 import { useContext } from "react";
 import OptionsListItems from "./OptionsListItems";
-import { SelectContext } from "./MultiSelect";
+// import { SelectContext } from "./MultiSelect";
+import { SelectContext } from "./SelectContext";
 import { Style } from "./style";
 
 export default function OptionsList() {
   const context = useContext(SelectContext);
   const userStyle = context?.controlledProp;
   return (
-    <div className="overflow-hidden z-[100]">
+    <div
+      tabIndex={0}
+      onBlur={() => {
+        context?.handleClickOpen();
+      }}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      data-tag="list"
+      className={`overflow-hidden z-[100] text-[0.5rem]`}
+    >
       <div
         tabIndex={0}
         onBlur={context?.handleClickOpen}

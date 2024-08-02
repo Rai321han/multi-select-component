@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { SelectContext } from "./MultiSelect";
+// import { SelectContext } from "./MultiSelect";
+import { SelectContext } from "./SelectContext";
 import { Style } from "./style";
 
 export default function NoOption() {

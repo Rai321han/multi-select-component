@@ -26,7 +26,7 @@ const controlledProp = {
   width: "200px",
   limit: 10,
   default: ["default"],
-  textSize: "0.5rem",
+  textSize: "0.3rem",
   isMulti: true,
   // placeholder: "tag:",
   isCreateable: true,

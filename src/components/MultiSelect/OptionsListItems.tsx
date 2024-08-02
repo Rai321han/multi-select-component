@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { CreateAbleObject } from "./utils";
-import { SelectContext } from "./MultiSelect";
+// import { SelectContext } from "./MultiSelect";
 import SingleListItem from "./SingleListItem";
 import NoOption from "./NoOption";
+import { SelectContext } from "./SelectContext";
 
 export default function OptionsListItems() {
   const context = useContext(SelectContext);

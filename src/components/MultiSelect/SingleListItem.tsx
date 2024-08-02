@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Option } from "../../constants";
 import { Style } from "./style";
-import { SelectContext } from "./MultiSelect";
+// import { SelectContext } from "./MultiSelect";
+import { SelectContext } from "./SelectContext";
 
 type SingleListItemType = {
   option: Option;

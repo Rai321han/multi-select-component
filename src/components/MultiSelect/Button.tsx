@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { SelectContext } from "./MultiSelect";
+// import { SelectContext } from "./MultiSelect";
+import { SelectContext } from "./SelectContext";
 import { Style } from "./style";
 
 export default function Button({
@@ -24,8 +25,8 @@ export default function Button({
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
           fill={`${
             context?.controlledProp.inputBtnColor || Style.inputBtnColor

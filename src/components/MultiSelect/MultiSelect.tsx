@@ -5,25 +5,25 @@ import Input from "./Input";
 import Button from "./Button";
 import { Tag } from "../../App";
 import { Style } from "./style";
-import { createContext } from "react";
+// import { createContext } from "react";
+import { SelectContext } from "./SelectContext";
 import "./style.css";
 
-type ContextType = {
-  options: string[];
-  tags: Tag[];
-  setTags: React.Dispatch<React.SetStateAction<Tag[]>>;
-  setInputText: React.Dispatch<React.SetStateAction<string>>;
-  inputText: string;
-  controlledProp: controlledPropType;
-  handleSelectOption: (option: Option) => void;
-  handleClickRemove: (tag: Tag) => void;
-  removeAlltags: () => void;
-  handleClickOpen: () => void;
-  optionsList: Option[];
-  isOpen: boolean;
-};
-
-export const SelectContext = createContext<ContextType | null>(null);
+// type ContextType = {
+//   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+//   options: string[];
+//   tags: Tag[];
+//   setTags: React.Dispatch<React.SetStateAction<Tag[]>>;
+//   setInputText: React.Dispatch<React.SetStateAction<string>>;
+//   inputText: string;
+//   controlledProp: controlledPropType;
+//   handleSelectOption: (option: Option) => void;
+//   handleClickRemove: (tag: Tag) => void;
+//   removeAlltags: () => void;
+//   handleClickOpen: () => void;
+//   optionsList: Option[];
+//   isOpen: boolean;
+// };
 
 type controlledPropType = {
   limit?: number;
@@ -204,8 +204,8 @@ export default function MultiSelect({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
               fill={`${
                 controlledProp.selectedTextColor || Style.selectedTextColor
@@ -245,6 +245,7 @@ export default function MultiSelect({
   };
 
   const value = {
+    setIsOpen,
     options,
     tags,
     setTags,
@@ -262,7 +263,11 @@ export default function MultiSelect({
   return (
     <SelectContext.Provider value={value}>
       <div
-        className={`rounded-[15px] text-xs ${
+        onClick={() => {
+          handleClickOpen();
+        }}
+        tabIndex={0}
+        className={` rounded-[15px] text-[0.5rem] ${
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
@@ -270,16 +275,14 @@ export default function MultiSelect({
       >
         <div className="relative tracking-wide w-[100%]">
           <div
-            tabIndex={0}
-            onClick={handleClickOpen}
+            //
+
             className={`${
               controlledProp.bgColorInput || Style.bgColorInput
             } flex flex-row px-1.5 py-1.5 max-w-[100%]  justify-between rounded-[15px]`}
           >
             <div
-              className={`flex-1 flex text-[${
-                controlledProp.textSize || Style.textSize
-              }] flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
+              className={`flex-1 flex text-[0.5rem] flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
             >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
@@ -301,8 +304,8 @@ export default function MultiSelect({
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M0.912842 31V0H2.91284V31H0.912842Z"
                     fill={`${
                       controlledProp.inputBtnColor || Style.inputBtnColor
@@ -310,8 +313,6 @@ export default function MultiSelect({
                   />
                 </svg>
               </div>
-              {/* <div className="cursor-pointer p-1 border-l-2 solid border-l-gray-400 border-b-2 solid border-gray-400 -rotate-45"></div> */}
-
               <svg
                 className={`mr-1 w-[12px] h-[10px]`}
                 viewBox="0 0 18 11"
@@ -319,8 +320,8 @@ export default function MultiSelect({
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M0.205811 1.70718L1.62002 0.292969L8.91292 7.58586L16.2058 0.292969L17.62 1.70718L8.91292 10.4143L0.205811 1.70718Z"
                   fill={`${
                     controlledProp.inputBtnColor || Style.inputBtnColor
