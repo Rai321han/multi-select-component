@@ -22,16 +22,23 @@ export default function SingleListItem({
     <li
       tabIndex={0}
       key={option.id}
-      className={`tracking-wide hover:text-[${
+      className={`hover:bg-[#1b1b1b] tracking-wide hover:text-[${
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
       }]  border-b-[${
         userStyle?.optionBorderColor || Style.optionBorderColor
-      }]  py-[0.35rem] cursor-pointer
-      ${userStyle?.textColor || Style.textColor} truncate ... text-[${
+      }] px-5  py-[0.35rem] cursor-pointer
+        ${userStyle?.textColor || Style.textColor} truncate ... text-[${
         userStyle?.textSize || Style.textSize
       }]`}
-      onClick={() => {
+      onClick={(e) => {
         onClick(option);
+        e.stopPropagation();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") onClick(option);
+      }}
+      onMouseDown={(e) => {
+        e.preventDefault();
       }}
     >
       {noOption ? (

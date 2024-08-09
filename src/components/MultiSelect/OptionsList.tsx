@@ -9,19 +9,13 @@ export default function OptionsList() {
   const userStyle = context?.controlledProp;
   return (
     <div
-      tabIndex={0}
-      onBlur={() => {
-        context?.handleClickOpen();
-      }}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
       data-tag="list"
-      className={`overflow-hidden z-[100] text-[0.5rem]`}
+      className={`overflow-hidden text-[${
+        userStyle?.textSize || Style.textSize
+      }] z-[1000]`}
     >
       <div
-        tabIndex={0}
-        onBlur={context?.handleClickOpen}
+        // onBlur={context?.handleClickOpen}
         className={` ${
           context?.isOpen ? "block" : "hidden"
         } w-full max-h-40 overflow-y-auto  left-0 ${

@@ -22,7 +22,7 @@ type StyleType = {
 
 export const Style: StyleType = {
   width: "150px",
-  textSize: "2px",
+  textSize: "5px",
   textColor: "text-[#A5A9B5]",
   bgColorInput: "bg-gray-200",
   bgColorOption: "bg-gray-200",
@@ -30,8 +30,8 @@ export const Style: StyleType = {
   inputBorderSize: "border",
   optionBorderSize: "border",
   optionListColor: "bg-gray-200",
-  optionHoverColor: "bg-black",
-  optionHoverTextColor: "text-white",
+  optionHoverColor: "#1b1b1b",
+  optionHoverTextColor: "#ffffff",
   selectedBgColor: "bg-gray-600",
   selectedTextColor: "text-gray-900",
   selectedClearColor: "#000000", //cannot be tailwind color class

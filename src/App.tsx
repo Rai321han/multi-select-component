@@ -24,9 +24,9 @@ export type Tag = {
 
 const controlledProp = {
   width: "200px",
-  limit: 10,
+  // limit: 10,
   default: ["default"],
-  textSize: "0.3rem",
+  textSize: "0.9rem",
   isMulti: true,
   // placeholder: "tag:",
   isCreateable: true,
@@ -40,6 +40,7 @@ const controlledProp = {
   optionListColor: "bg-gradient-to-r from-[#212226] to-[#2F323A]",
   optionBorderSize: "border",
   optionBorderColor: "#5f6269ed",
+  optionHoverColor: "#1b1b1b",
   optionHoverTextColor: "#ffffff",
   selectedClearColor: "#F5E4E4",
   inputBtnColor: "#A5A9B5",

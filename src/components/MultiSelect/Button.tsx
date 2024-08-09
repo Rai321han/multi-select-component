@@ -13,13 +13,16 @@ export default function Button({
   const context = useContext(SelectContext);
   return (
     <button
-      onClick={onClick}
+      onClick={(e) => {
+        onClick();
+        e.stopPropagation();
+      }}
       className={`text-xl text-gray-400 hover:text-gray-700 ${className}`}
     >
       {/* &times; */}
 
       <svg
-        className={`w-3 h-2`}
+        className={` w-[10 h-2`}
         viewBox="0 0 14 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

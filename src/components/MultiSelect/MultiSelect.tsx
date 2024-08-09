@@ -195,7 +195,11 @@ export default function MultiSelect({
           }] hover:bg-[${
             controlledProp.selectedClearColor || Style.selectedClearColor
           }] py-1 px-1 place-items-stretch rounded-r-lg flex items-center`}
-          onClick={() => handleClickRemove(tag)}
+          onClick={(e) => {
+            handleClickRemove(tag);
+            e.stopPropagation();
+          }}
+          onMouseDown={(e) => e.preventDefault()}
         >
           <svg
             className={`w-1.5 h-1.5`}
@@ -229,11 +233,11 @@ export default function MultiSelect({
         } flex flex-row rounded-[10px] shadow-lg max-w-[90px] items-stretch`}
       >
         <div
-          className={`text-[${controlledProp.textSize || Style.textSize}] ${
+          className={`text-[0.7rem] ${
             tag.isDefault ? "px-2" : "pr-1 pl-2"
           } py-1 truncate ...`}
         >
-          {tag.tagValue}
+          <p>{tag.tagValue}</p>
         </div>
         {content}
       </div>
@@ -263,15 +267,20 @@ export default function MultiSelect({
   return (
     <SelectContext.Provider value={value}>
       <div
+        tabIndex={0}
         onClick={() => {
           handleClickOpen();
         }}
-        tabIndex={0}
-        className={` rounded-[15px] text-[0.5rem] ${
+        onBlur={() => {
+          setIsOpen(false);
+        }}
+        className={`text-[${
+          controlledProp.textSize || Style.textSize
+        }] rounded-[15px] text-[${controlledProp.textSize || Style.textSize}] ${
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl font-poppins w-[100%] sm:w-[200px] max-w-[200px]`}
+        } shadow-xl font-poppins w-[100%] sm:w-[300px] max-w-[300px]`}
       >
         <div className="relative tracking-wide w-[100%]">
           <div
@@ -282,7 +291,9 @@ export default function MultiSelect({
             } flex flex-row px-1.5 py-1.5 max-w-[100%]  justify-between rounded-[15px]`}
           >
             <div
-              className={`flex-1 flex text-[0.5rem] flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
+              className={`flex-1 flex text-[${
+                controlledProp.textSize || Style.textSize
+              }] flex-row  flex-wrap items-center gap-1 max-w-[100%] pr-1`}
             >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
@@ -290,7 +301,9 @@ export default function MultiSelect({
             </div>
 
             <div className="flex flex-row items-center gap-[0.3em] justify-center">
-              <Button onClick={removeAlltags} />
+              {tags.length > defaultSelected.length ? (
+                <Button onClick={removeAlltags} />
+              ) : null}
               {/* <div className="py-2 border-l-2 solid border-l-gray-400"></div> */}
               <div
                 className={`flex flex-row items-center justify-center ${
@@ -314,7 +327,7 @@ export default function MultiSelect({
                 </svg>
               </div>
               <svg
-                className={`mr-1 w-[12px] h-[10px]`}
+                className={`mr-1 w-[10px] h-[10px]`}
                 viewBox="0 0 18 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

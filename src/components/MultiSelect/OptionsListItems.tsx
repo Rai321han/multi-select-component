@@ -50,9 +50,5 @@ export default function OptionsListItems() {
     renderedOptions.push(<NoOption />);
   }
 
-  return (
-    <ul tabIndex={0} className=" px-5 py-[0.1rem] tracking-wide listParent">
-      {renderedOptions}
-    </ul>
-  );
+  return <ul className="tracking-wide listParent">{renderedOptions}</ul>;
 }
