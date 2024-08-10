@@ -25,12 +25,13 @@ export default function SingleListItem({
       className={`${
         context?.controlledProp.optionBorderColor ||
         userStyle?.optionBorderColor
-      } hover:${
-        context?.controlledProp.optionHoverColor || userStyle?.optionHoverColor
       } tracking-wide hover:${
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
       } px-5  py-[0.35rem] cursor-pointer
-        truncate ... ${userStyle?.textSize || Style.textSize} `}
+        truncate ... ${userStyle?.textSize || Style.textSize} hover:${
+        context?.controlledProp.optionHoverBgColor ||
+        userStyle?.optionHoverBgColor
+      }`}
       onClick={(e) => {
         onClick(option);
         e.stopPropagation();
@@ -42,7 +43,11 @@ export default function SingleListItem({
         e.preventDefault();
       }}
     >
-      {noOption ? <span>create&nbsp;</span> : null}
+      {noOption ? (
+        <span className={`${userStyle?.textColor || Style.textColor}`}>
+          create&nbsp;
+        </span>
+      ) : null}
       <span className={`${userStyle?.textColor || Style.textColor}`}>
         {noOption ? `"${option.value}"` : option.value}
       </span>

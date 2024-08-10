@@ -8,7 +8,7 @@ type StyleType = {
   inputBorderSize: string;
   optionBorderSize: string;
   optionListColor: string;
-  optionHoverColor: string;
+  optionHoverBgColor: string;
   selectedBgColor: string;
   selectedTextColor: string;
   individualRemoveColor: string;
@@ -29,7 +29,7 @@ export const Style: StyleType = {
   inputBorderSize: "border",
   optionBorderSize: "border",
   optionListColor: "bg-gray-200",
-  optionHoverColor: "bg-[#1b1b1b]",
+  optionHoverBgColor: "bg-red-500",
   optionHoverTextColor: "text-black",
   selectedBgColor: "bg-gray-600",
   selectedTextColor: "text-gray-900",

@@ -45,7 +45,7 @@ type controlledPropType = {
   inputBorderSize?: string;
   optionBorderSize?: string;
   optionListColor?: string;
-  optionHoverColor?: string;
+  optionHoverBgColor?: string;
   selectedBgColor?: string;
   individualRemoveColor?: string;
   inputBtnColor?: string;

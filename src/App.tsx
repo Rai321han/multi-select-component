@@ -39,7 +39,9 @@ const controlledProp = {
   // optionBorderColor: "border-[#5f6269ed]",
   optionBorderColor: "border-red-500",
 
-  optionHoverColor: "bg-[#1b1b1b]",
+  // optionHoverBgColor: "bg-[#1b1b1b]",
+  optionHoverBgColor: "bg-red-500",
+
   optionHoverTextColor: "text-white",
   inputBtnColor: "#A5A9B5", //cannot be tailwind class
   defaultBgColor: "bg-[#828282]",
