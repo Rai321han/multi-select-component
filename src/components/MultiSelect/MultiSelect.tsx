@@ -47,7 +47,6 @@ type controlledPropType = {
   optionListColor?: string;
   optionHoverColor?: string;
   selectedBgColor?: string;
-  selectedClearColor?: string;
   individualRemoveColor?: string;
   inputBtnColor?: string;
   inputTextColor?: string;
@@ -192,8 +191,6 @@ export default function MultiSelect({
         <div
           className={`text-[${
             controlledProp.selectedTextColor || Style.selectedTextColor
-          }] hover:bg-[${
-            controlledProp.selectedClearColor || Style.selectedClearColor
           }] py-1 px-1 place-items-stretch rounded-r-lg flex items-center`}
           onClick={(e) => {
             handleClickRemove(tag);
@@ -212,7 +209,8 @@ export default function MultiSelect({
               clipRule="evenodd"
               d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
               fill={`${
-                controlledProp.selectedTextColor || Style.selectedTextColor
+                controlledProp.individualRemoveColor ||
+                Style.individualRemoveColor
               } `}
             />
           </svg>
@@ -222,22 +220,20 @@ export default function MultiSelect({
     return (
       <div
         key={tag.tagId}
-        className={`cursor-pointer  ${
-          controlledProp.selectedTextColor || Style.selectedTextColor
-        } ${
+        className={`cursor-pointer ${
           tag.isDefault
             ? controlledProp.defaultBgColor || Style.defaultBgColor
             : controlledProp.selectedBgColor || Style.selectedBgColor
         } ${
           controlledProp.selectedTextColor || Style.selectedTextColor
-        } flex flex-row rounded-[10px] shadow-lg max-w-[90px] items-stretch`}
+        } flex flex-row rounded-[10px] shadow-lg max-w-[90px] items-stretch truncate ...`}
       >
         <div
           className={`text-[0.7rem] ${
             tag.isDefault ? "px-2" : "pr-1 pl-2"
           } py-1 truncate ...`}
         >
-          <p>{tag.tagValue}</p>
+          <p className="truncate ...">{tag.tagValue}</p>
         </div>
         {content}
       </div>

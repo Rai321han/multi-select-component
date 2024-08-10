@@ -22,14 +22,15 @@ export default function SingleListItem({
     <li
       tabIndex={0}
       key={option.id}
-      className={`hover:bg-[#1b1b1b] tracking-wide hover:text-[${
+      className={`${
+        context?.controlledProp.optionBorderColor ||
+        userStyle?.optionBorderColor
+      } hover:${
+        context?.controlledProp.optionHoverColor || userStyle?.optionHoverColor
+      } tracking-wide hover:${
         userStyle?.optionHoverTextColor || Style.optionHoverTextColor
-      }]  border-b-[${
-        userStyle?.optionBorderColor || Style.optionBorderColor
-      }] px-5  py-[0.35rem] cursor-pointer
-        ${userStyle?.textColor || Style.textColor} truncate ... text-[${
-        userStyle?.textSize || Style.textSize
-      }]`}
+      } px-5  py-[0.35rem] cursor-pointer
+        truncate ... ${userStyle?.textSize || Style.textSize} `}
       onClick={(e) => {
         onClick(option);
         e.stopPropagation();
@@ -46,7 +47,9 @@ export default function SingleListItem({
           select&nbsp;
         </span>
       ) : null}
-      {option.value}
+      <span className={` ${userStyle?.textColor || Style.textColor}`}>
+        {option.value}
+      </span>
     </li>
   );
 }

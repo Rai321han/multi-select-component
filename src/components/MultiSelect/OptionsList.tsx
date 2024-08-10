@@ -22,9 +22,7 @@ export default function OptionsList() {
           userStyle?.optionListColor || Style?.optionListColor
         } top-[100%] absolute mt-2 rounded-xl shadow-lg ${
           userStyle?.optionBorderSize || Style.optionBorderSize
-        } ${userStyle?.optionBorderSize || Style.optionBorderSize} ${
-          userStyle?.borderColor || Style.borderColor
-        }`}
+        } ${userStyle?.borderColor || Style.borderColor}`}
       >
         <OptionsListItems />
       </div>

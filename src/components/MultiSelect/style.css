@@ -1,4 +1,4 @@
 .listParent li:not(:last-child) {
-  border-bottom: 0.1px;
+  border-bottom-width: 0.1px;
   border-style: solid;
 }

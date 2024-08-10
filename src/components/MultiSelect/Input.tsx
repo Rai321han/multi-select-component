@@ -11,9 +11,10 @@ export default function Input() {
   return (
     <input
       type="text"
-      className={`w-[20px] flex flex-grow outline-none px-1 bg-transparent text-[${
-        context?.controlledProp.inputTextColor || Style.inputTextColor
-      }] tracking-wide`}
+      className={`w-[20px] flex flex-grow outline-none px-1 bg-transparent 
+        tracking-wide ${
+          context?.controlledProp.inputTextColor || Style.inputTextColor
+        }`}
       value={context?.inputText}
       onChange={(e) => {
         context?.setInputText(e.target.value);

@@ -13,6 +13,7 @@ const options: string[] = [
   "SCSS",
   "Vite",
   "Testing",
+  "Electron",
 ];
 
 export type Tag = {
@@ -24,27 +25,23 @@ export type Tag = {
 
 const controlledProp = {
   width: "200px",
-  // limit: 10,
   default: ["default"],
-  textSize: "0.9rem",
+  textSize: "text-[0.9rem]",
   isMulti: true,
-  // placeholder: "tag:",
   isCreateable: true,
-
   bgColorInput: "bg-gradient-to-r from-[#2F323A] to-[#212226]",
-  // selectedBgColor: "bg-[#939599]",
   selectedBgColor: "bg-gradient-to-r from-[#6F6F6F] via-[#989898] to-[#d6d6d6]",
-  selectedTextColor: "#232426",
+  selectedTextColor: "text-[#232426]",
   borderColor: "border-[#616267]",
-  inputTextColor: "#ffffff",
+  inputTextColor: "text-white",
   optionListColor: "bg-gradient-to-r from-[#212226] to-[#2F323A]",
   optionBorderSize: "border",
-  optionBorderColor: "#5f6269ed",
-  optionHoverColor: "#1b1b1b",
-  optionHoverTextColor: "#ffffff",
-  selectedClearColor: "#F5E4E4",
-  inputBtnColor: "#A5A9B5",
+  optionBorderColor: "border-[#5f6269ed]",
+  optionHoverColor: "bg-[#1b1b1b]",
+  optionHoverTextColor: "text-white",
+  inputBtnColor: "#A5A9B5", //cannot be tailwind class
   defaultBgColor: "bg-[#828282]",
+  individualRemoveColor: "#232426",
 };
 
 function App() {
