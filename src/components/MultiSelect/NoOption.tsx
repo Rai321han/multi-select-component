@@ -11,6 +11,8 @@ export default function NoOption() {
       tabIndex={0}
       className={`px-4 py-1 text-center tracking-wide`}
       key={123456782434}
+      onClick={(e) => e.stopPropagation()}
+      onMouseDown={(e) => e.preventDefault()}
     >
       <span
         className={`${context?.controlledProp.textColor || Style.textColor}`}
