@@ -18,7 +18,7 @@ export default function OptionsList() {
         // onBlur={context?.handleClickOpen}
         className={` ${
           context?.isOpen ? "block" : "hidden"
-        } w-full max-h-40 overflow-y-auto  left-0 ${
+        } w-full max-h-60 overflow-y-auto  left-0 ${
           userStyle?.optionListColor || Style?.optionListColor
         } top-[100%] absolute mt-2 rounded-xl shadow-lg ${
           userStyle?.optionBorderSize || Style.optionBorderSize

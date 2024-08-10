@@ -22,16 +22,16 @@ export default function SingleListItem({
     <li
       tabIndex={0}
       key={option.id}
-      className={`${
-        context?.controlledProp.optionBorderColor ||
-        userStyle?.optionBorderColor
-      } tracking-wide hover:${
-        userStyle?.optionHoverTextColor || Style.optionHoverTextColor
-      } px-5  py-[0.35rem] cursor-pointer
-        truncate ... ${userStyle?.textSize || Style.textSize} hover:${
-        context?.controlledProp.optionHoverBgColor ||
-        userStyle?.optionHoverBgColor
-      }`}
+      className={`
+        ${userStyle?.textColor || Style.textColor} 
+        ${userStyle?.optionBorderColor || Style.optionBorderColor}  
+        ${userStyle?.textSize || Style.textSize} 
+        ${userStyle?.optionHoverBgColor || Style.optionHoverBgColor} 
+        ${userStyle?.optionHoverTextColor || Style.optionHoverTextColor} 
+        tracking-wide  px-5 py-[0.35rem] cursor-pointer
+        truncate ... `}
+      //clicking a lsit should call handleSelectOption func
+
       onClick={(e) => {
         onClick(option);
         e.stopPropagation();
@@ -43,14 +43,8 @@ export default function SingleListItem({
         e.preventDefault();
       }}
     >
-      {noOption ? (
-        <span className={`${userStyle?.textColor || Style.textColor}`}>
-          create&nbsp;
-        </span>
-      ) : null}
-      <span className={`${userStyle?.textColor || Style.textColor}`}>
-        {noOption ? `"${option.value}"` : option.value}
-      </span>
+      {noOption ? <span>create&nbsp;</span> : null}
+      <span>{noOption ? `"${option.value}"` : option.value}</span>
     </li>
   );
 }

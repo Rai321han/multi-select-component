@@ -30,21 +30,20 @@ const controlledProp = {
   isMulti: true,
   isCreateable: true,
   bgColorInput: "bg-gradient-to-r from-[#2F323A] to-[#212226]",
-  selectedBgColor: "bg-gradient-to-r from-[#6F6F6F] via-[#989898] to-[#d6d6d6]",
+  selectedBgColor: "bg-[#d6d6d6]",
   selectedTextColor: "text-[#232426]",
   borderColor: "border-[#616267]",
   inputTextColor: "text-white",
   optionListColor: "bg-gradient-to-r from-[#212226] to-[#2F323A]",
   optionBorderSize: "border",
-  // optionBorderColor: "border-[#5f6269ed]",
-  optionBorderColor: "border-red-500",
+  optionBorderColor: "border-[#5f6269ed]",
+  // optionBorderColor: "border-red-500",
 
-  // optionHoverBgColor: "bg-[#1b1b1b]",
-  optionHoverBgColor: "bg-red-500",
+  optionHoverBgColor: "hover:bg-[#1b1b1b]",
 
-  optionHoverTextColor: "text-white",
+  optionHoverTextColor: "hover:text-white",
   inputBtnColor: "#A5A9B5", //cannot be tailwind class
-  defaultBgColor: "bg-[#828282]",
+  defaultBgColor: "bg-[#a1a1a1]",
   individualRemoveColor: "#232426",
 };
 
