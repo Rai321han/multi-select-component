@@ -21,7 +21,7 @@ export default function Input() {
         context?.setIsOpen(true);
       }}
       onKeyDown={(e) => {
-        if (e.key === "Enter") {
+        if (context?.controlledProp.isCreateable && e.key === "Enter") {
           if (context?.inputText !== "")
             context?.handleSelectOption(CreateAbleObject(context?.inputText));
         }
