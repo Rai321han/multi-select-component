@@ -16,6 +16,7 @@ export default function Input() {
           context?.controlledProp.inputTextColor || Style.inputTextColor
         }`}
       value={context?.inputText}
+      placeholder={`${context && context.tags.length < 1 ? "Select..." : ""}`}
       onChange={(e) => {
         context?.setInputText(e.target.value);
         context?.setIsOpen(true);

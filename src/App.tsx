@@ -1,6 +1,8 @@
 import { useState } from "react";
 import MultiSelect from "./components/MultiSelect/MultiSelect";
 import Checkbox from "./components/Checkbox/Checkbox";
+import NumberInput from "./components/NumberInput/NumberInput";
+
 const options: string[] = [
   "JavaScript",
   "React",
@@ -55,18 +57,34 @@ const style: CheckBoxStyleType = {
   textColor: "text-gray-200",
 };
 
+const inputStyle: {
+  textSize?: string;
+  bgColor?: string;
+  textColor?: string;
+} = {
+  textSize: "text-[15px]",
+  bgColor: "bg-zinc-500",
+  textColor: "text-gray-200",
+};
+
 function App() {
   const [tags, setTags] = useState<Tag[]>([]);
   const [isMultiCheck, setIsMultiCheck] = useState<boolean>(false);
   const [isCreateableCheck, setIsCreateableCheck] = useState<boolean>(false);
+  const [inputNumber, setInputNumber] = useState<number>(5);
 
   return (
     <div className="p-3 flex flex-col justify-center items-center w-screen h-screen gap-2">
       <div className="flex flex-row gap-3">
+        <NumberInput
+          style={inputStyle}
+          onChange={setInputNumber}
+          input={inputNumber}
+        />
         <Checkbox
           state={isMultiCheck}
           isDisabled={false}
-          text="Multiple"
+          text="MultiSelect"
           handleClick={setIsMultiCheck}
           style={style}
         />
@@ -86,6 +104,7 @@ function App() {
           ...controlledProp,
           isMulti: isMultiCheck,
           isCreateable: isCreateableCheck,
+          limit: inputNumber,
         }}
       />
     </div>

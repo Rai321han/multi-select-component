@@ -5,7 +5,6 @@ import Input from "./Input";
 import Button from "./Button";
 import { Tag } from "../../App";
 import { Style } from "./style";
-// import { createContext } from "react";
 import { SelectContext } from "./SelectContext";
 import "./style.css";
 
@@ -230,7 +229,7 @@ export default function MultiSelect({
       >
         <div
           className={`text-[0.7rem] ${
-            tag.isDefault ? "px-2" : "pr-1 pl-2"
+            tag.isDefault || !controlledProp.isMulti ? "px-2" : "pr-1 pl-2"
           } py-1 truncate ...`}
         >
           <p className="truncate ...">{tag.tagValue}</p>

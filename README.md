@@ -28,7 +28,7 @@
 
 [![Select Component][product-screenshot]](https://multi-select-component-brown.vercel.app/)
 
-This is a simple modern landing page for bank. It's a static one page site. I've built this mostly for practicing responsive design using Tailwind CSS and yeah, introducing myself to TypeScript.
+A react select component. This is a reusable react component.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,6 +73,10 @@ Before you begin, you will need to have the following tools installed on your ma
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Usage
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- CONTRIBUTING -->
 
 ## Contributing
@@ -95,16 +99,6 @@ Don't forget to give the project a star! Thanks again!
 [![Linkedin]][Linkedin-url] [![Twitter]][Twitter-url] [![Gmail]][Gmail-url]
 
 Project Link: [https://github.com/Rai321han/modern-bank-landing-page](https://github.com/Rai321han/modern-bank-landing-page)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-- [Amazing UI design from One Week Wonders](https://www.oneweekwonders.com/)
-- [jsmastery](https://www.jsmastery.pro/)
-- [vercel](https://vercel.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
