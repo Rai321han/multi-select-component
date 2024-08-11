@@ -60,7 +60,7 @@ Before you begin, you will need to have the following tools installed on your ma
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Rai321han/modern-bank-landing-page.git
+   git clone https://github.com/Rai321han/multi-select-component.git
    ```
 2. Install NPM packages
    ```sh
