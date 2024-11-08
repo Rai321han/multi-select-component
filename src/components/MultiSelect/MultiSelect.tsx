@@ -269,15 +269,15 @@ export default function MultiSelect({
         onBlur={() => {
           setIsOpen(false);
         }}
-        className={`text-[${
+        className={` text-[${
           controlledProp.textSize || Style.textSize
         }] rounded-[15px] text-[${controlledProp.textSize || Style.textSize}] ${
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl font-poppins w-[100%] sm:w-[300px] max-w-[300px]`}
+        } shadow-xl font-poppins w-[100%] sm:w-[450px] min-w-[200px]`}
       >
-        <div className="relative tracking-wide w-[100%]">
+        <div className="relative tracking-wide w-[100%] ">
           <div
             //
 

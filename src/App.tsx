@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MultiSelect from "./components/MultiSelect/MultiSelect";
-import Checkbox from "./components/Checkbox/Checkbox";
-import NumberInput from "./components/NumberInput/NumberInput";
+// import Checkbox from "./components/Checkbox/Checkbox";
+// import NumberInput from "./components/NumberInput/NumberInput";
 
 const options: string[] = [
   "JavaScript",
@@ -27,7 +27,7 @@ export type Tag = {
 
 const controlledProp = {
   width: "200px",
-  default: ["default"],
+  // default: ["default"],
   textSize: "text-[0.9rem]",
   isMulti: true,
   isCreateable: false,
@@ -46,36 +46,94 @@ const controlledProp = {
   individualRemoveColor: "#232426",
 };
 
-type CheckBoxStyleType = {
-  textSize?: string;
-  textColor?: string;
-  checkedColor?: string;
-};
+// type CheckBoxStyleType = {
+//   textSize?: string;
+//   textColor?: string;
+//   checkedColor?: string;
+// };
 
-const style: CheckBoxStyleType = {
-  textSize: "text-[15px]",
-  textColor: "text-gray-200",
-};
+// const style: CheckBoxStyleType = {
+//   textSize: "text-[15px]",
+//   textColor: "text-gray-200",
+// };
 
-const inputStyle: {
-  textSize?: string;
-  bgColor?: string;
-  textColor?: string;
-} = {
-  textSize: "text-[15px]",
-  bgColor: "bg-zinc-500",
-  textColor: "text-gray-200",
-};
+// const inputStyle: {
+//   textSize?: string;
+//   bgColor?: string;
+//   textColor?: string;
+// } = {
+//   textSize: "text-[15px]",
+//   bgColor: "bg-zinc-500",
+//   textColor: "text-gray-200",
+// };
 
 function App() {
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [isMultiCheck, setIsMultiCheck] = useState<boolean>(false);
-  const [isCreateableCheck, setIsCreateableCheck] = useState<boolean>(false);
-  const [inputNumber, setInputNumber] = useState<number>(5);
+  const [tags1, setTags1] = useState<Tag[]>([]);
+  const [tags2, setTags2] = useState<Tag[]>([]);
+  const [tags3, setTags3] = useState<Tag[]>([]);
+
+  // const [isMultiCheck, setIsMultiCheck] = useState<boolean>(false);
+  // const [isCreateableCheck, setIsCreateableCheck] = useState<boolean>(false);
+  // const [inputNumber, setInputNumber] = useState<number>(5);
 
   return (
-    <div className="p-3 flex flex-col justify-center items-center w-screen h-screen gap-2">
-      <div className="flex flex-row gap-3">
+    <div className="p-3  w-screen h-screen flex justify-center">
+      <div className="flex flex-col justify-center items-center gap-16 h-full min-w-[200px] max-w-[450px]">
+        <div className="w-full">
+          <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
+            Single Select
+          </h1>
+
+          <MultiSelect
+            options={options}
+            tags={tags2}
+            setTags={setTags2}
+            controlledProp={{
+              ...controlledProp,
+              isMulti: false,
+              // isCreateable: true,
+              limit: 1,
+            }}
+          />
+        </div>
+
+        <div className="w-full">
+          <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
+            Multiple Select
+          </h1>
+
+          <MultiSelect
+            options={options}
+            tags={tags3}
+            setTags={setTags3}
+            controlledProp={{
+              ...controlledProp,
+              isMulti: true,
+              // isCreateable: true,
+              limit: 10,
+            }}
+          />
+        </div>
+
+        <div className="w-full">
+          <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
+            Createable Select
+          </h1>
+
+          <MultiSelect
+            options={options}
+            tags={tags1}
+            setTags={setTags1}
+            controlledProp={{
+              ...controlledProp,
+              isMulti: true,
+              isCreateable: true,
+              // limit: inputNumber,
+            }}
+          />
+        </div>
+      </div>
+      {/* <div className="flex flex-row gap-3">
         <NumberInput
           style={inputStyle}
           onChange={setInputNumber}
@@ -95,8 +153,8 @@ function App() {
           handleClick={setIsCreateableCheck}
           style={style}
         />
-      </div>
-      <MultiSelect
+      </div> */}
+      {/* <MultiSelect
         options={options}
         tags={tags}
         setTags={setTags}
@@ -106,7 +164,7 @@ function App() {
           isCreateable: isCreateableCheck,
           limit: inputNumber,
         }}
-      />
+      /> */}
     </div>
   );
 }
