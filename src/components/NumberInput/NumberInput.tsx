@@ -8,15 +8,24 @@ type NumberInputType = {
   style?: Style;
   input: number;
   onChange: React.Dispatch<React.SetStateAction<number>>;
+  label?: string;
 };
 
 export default function NumberInput({
   style,
   input,
   onChange,
+  label,
 }: NumberInputType) {
   return (
-    <div className="flex flex-row gap-[5px]">
+    <div className="flex flex-row gap-[10px] py-3">
+      <p
+        className={`${style?.textColor || "text-white"} ${
+          style?.textSize || "16px"
+        }`}
+      >
+        {label}
+      </p>
       <input
         type="number"
         min={1}
@@ -36,13 +45,6 @@ export default function NumberInput({
           }
         }}
       />
-      <p
-        className={`${style?.textColor || "text-white"} ${
-          style?.textSize || "16px"
-        }`}
-      >
-        Limit
-      </p>
     </div>
   );
 }

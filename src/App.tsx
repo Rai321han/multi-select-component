@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MultiSelect from "./components/MultiSelect/MultiSelect";
 // import Checkbox from "./components/Checkbox/Checkbox";
-// import NumberInput from "./components/NumberInput/NumberInput";
+import NumberInput from "./components/NumberInput/NumberInput";
 
 const options: string[] = [
   "JavaScript",
@@ -57,15 +57,15 @@ const controlledProp = {
 //   textColor: "text-gray-200",
 // };
 
-// const inputStyle: {
-//   textSize?: string;
-//   bgColor?: string;
-//   textColor?: string;
-// } = {
-//   textSize: "text-[15px]",
-//   bgColor: "bg-zinc-500",
-//   textColor: "text-gray-200",
-// };
+const inputStyle: {
+  textSize?: string;
+  bgColor?: string;
+  textColor?: string;
+} = {
+  textSize: "text-[15px]",
+  bgColor: "bg-zinc-500",
+  textColor: "text-gray-200",
+};
 
 function App() {
   const [tags1, setTags1] = useState<Tag[]>([]);
@@ -74,12 +74,12 @@ function App() {
 
   // const [isMultiCheck, setIsMultiCheck] = useState<boolean>(false);
   // const [isCreateableCheck, setIsCreateableCheck] = useState<boolean>(false);
-  // const [inputNumber, setInputNumber] = useState<number>(5);
+  const [inputNumber, setInputNumber] = useState<number>(5);
 
   return (
     <div className="p-3  w-screen h-screen flex justify-center">
       <div className="flex flex-col justify-center items-center gap-16 h-full min-w-[200px] max-w-[450px]">
-        <div className="w-full">
+        <div className="w-full z-30">
           <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
             Single Select
           </h1>
@@ -97,7 +97,7 @@ function App() {
           />
         </div>
 
-        <div className="w-full">
+        <div className="w-full z-20 flex flex-col">
           <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
             Multiple Select
           </h1>
@@ -110,12 +110,21 @@ function App() {
               ...controlledProp,
               isMulti: true,
               // isCreateable: true,
-              limit: 10,
+              limit: inputNumber,
             }}
+          />
+          <NumberInput
+            style={inputStyle}
+            onChange={setInputNumber}
+            input={inputNumber}
+            label="Set limit"
           />
         </div>
 
-        <div className="w-full">
+        <div className="w-full z-10">
+          <p className="text-gray-300 italic text-xs">
+            Create your own option...
+          </p>
           <h1 className="font-poppins font-extrabold text-3xl text-white mb-5">
             Createable Select
           </h1>

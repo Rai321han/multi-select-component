@@ -275,9 +275,9 @@ export default function MultiSelect({
           controlledProp.borderColor || Style.borderColor
         }  solid ${
           controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl font-poppins w-[100%] sm:w-[450px] min-w-[200px]`}
+        } shadow-xl font-poppins w-[100%] sm:w-[450px] min-w-[200px] `}
       >
-        <div className="relative tracking-wide w-[100%] ">
+        <div className="relative tracking-wide w-[100%] z-1000">
           <div
             //
 

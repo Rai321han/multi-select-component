@@ -12,7 +12,7 @@ export default function OptionsList() {
       data-tag="list"
       className={`overflow-hidden text-[${
         userStyle?.textSize || Style.textSize
-      }] z-[1000]`}
+      }]`}
     >
       <div
         // onBlur={context?.handleClickOpen}
