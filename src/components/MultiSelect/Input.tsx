@@ -23,7 +23,7 @@ export default function Input() {
         }`}
       // value={context?.inputText}
       value={context?.inputText}
-      placeholder={`${context && context.tags.length < 1 ? "Select..." : ""}`}
+      placeholder={`${context && context.tags.length < 1 ? "select..." : ""}`}
       onChange={(e) => {
         // console.log(debouncedText);
         // setInputText(e.target.value);

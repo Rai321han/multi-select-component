@@ -52,6 +52,7 @@ type controlledPropType = {
   optionBorderColor?: string;
   optionHoverTextColor?: string;
   defaultBgColor?: string;
+  inputShadow?: string;
 };
 
 type MultiSelectProps = {
@@ -175,7 +176,9 @@ export default function MultiSelect({
       <div
         className={`${controlledProp.textColor || Style.textColor} 
         ${controlledProp.selectedBgColor || Style.selectedBgColor} 
-        flex flex-row items-stretch rounded-lg shadow-md`}
+        flex flex-row items-stretch ${
+          controlledProp.isRounded && "rounded-sm"
+        } shadow-md`}
       >
         <div
           className={`px-2 py-1 ${controlledProp.textSize || Style.textSize}`}
@@ -193,7 +196,7 @@ export default function MultiSelect({
         <div
           className={`text-[${
             controlledProp.selectedTextColor || Style.selectedTextColor
-          }] py-1 px-1 place-items-stretch rounded-r-lg flex items-center`}
+          }] py-1 px-1 place-items-stretch  flex items-center`}
           onClick={(e) => {
             handleClickRemove(tag);
             e.stopPropagation();
@@ -201,7 +204,10 @@ export default function MultiSelect({
           onMouseDown={(e) => e.preventDefault()}
         >
           <svg
-            className={`w-1.5 h-1.5`}
+            className={`w-1.5 h-1.5 ${
+              controlledProp.individualRemoveColor ||
+              Style.individualRemoveColor
+            } `}
             viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -210,10 +216,10 @@ export default function MultiSelect({
               fillRule="evenodd"
               clipRule="evenodd"
               d="M6.61991 8.03412L11.8256 13.2398L13.2398 11.8256L8.03412 6.61991L13.2398 1.41421L11.8256 0L6.61991 5.2057L1.41421 0L0 1.41421L5.2057 6.61991L0 11.8256L1.41421 13.2398L6.61991 8.03412Z"
-              fill={`${
-                controlledProp.individualRemoveColor ||
-                Style.individualRemoveColor
-              } `}
+              // fill={`${
+              //   controlledProp.individualRemoveColor ||
+              //   Style.individualRemoveColor
+              // } `}
             />
           </svg>
         </div>
@@ -228,7 +234,9 @@ export default function MultiSelect({
             : controlledProp.selectedBgColor || Style.selectedBgColor
         } ${
           controlledProp.selectedTextColor || Style.selectedTextColor
-        } flex flex-row rounded-[10px] shadow-lg max-w-[90px] items-stretch truncate ...`}
+        } flex flex-row ${
+          controlledProp.isRounded && "rounded-md"
+        }  shadow-lg max-w-[90px] items-stretch truncate ...`}
       >
         <div
           className={`text-[0.7rem] ${
@@ -274,13 +282,13 @@ export default function MultiSelect({
         onBlur={() => {
           setIsOpen(false);
         }}
-        className={` text-[${
+        className={`${controlledProp.isRounded && "rounded-md"}  text-[${
           controlledProp.textSize || Style.textSize
-        }] rounded-[15px] text-[${controlledProp.textSize || Style.textSize}] ${
+        }] text-[${controlledProp.textSize || Style.textSize}] ${
           controlledProp.borderColor || Style.borderColor
-        }  solid ${
-          controlledProp.inputBorderSize || Style.inputBorderSize
-        } shadow-xl font-poppins w-[100%] sm:w-[450px] min-w-[200px] `}
+        }  solid ${controlledProp.inputBorderSize || Style.inputBorderSize} ${
+          controlledProp.inputShadow || Style.inputShadow
+        } font-poppins w-[100%]`}
       >
         <div className="relative tracking-wide w-[100%] z-1000">
           <div
@@ -288,7 +296,9 @@ export default function MultiSelect({
 
             className={`${
               controlledProp.bgColorInput || Style.bgColorInput
-            } flex flex-row px-1.5 py-1.5 max-w-[100%]  justify-between rounded-[15px]`}
+            } flex flex-row px-1.5 py-1.5 max-w-[100%]  justify-between ${
+              controlledProp.isRounded && "rounded-md"
+            } `}
           >
             <div
               className={`flex-1 flex text-[${
@@ -311,7 +321,9 @@ export default function MultiSelect({
                 }`}
               >
                 <svg
-                  className={`min-w-fit h-4 text-center`}
+                  className={`min-w-fit h-4 text-center ${
+                    controlledProp.inputBtnColor || Style.inputBtnColor
+                  }`}
                   viewBox="0 0 3 31"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -320,14 +332,13 @@ export default function MultiSelect({
                     fillRule="evenodd"
                     clipRule="evenodd"
                     d="M0.912842 31V0H2.91284V31H0.912842Z"
-                    fill={`${
-                      controlledProp.inputBtnColor || Style.inputBtnColor
-                    } `}
                   />
                 </svg>
               </div>
               <svg
-                className={`mr-1 w-[10px] h-[10px]`}
+                className={`mr-1 w-[10px] h-[10px] ${
+                  controlledProp.inputBtnColor || Style.inputBtnColor
+                }`}
                 viewBox="0 0 18 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -336,9 +347,6 @@ export default function MultiSelect({
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M0.205811 1.70718L1.62002 0.292969L8.91292 7.58586L16.2058 0.292969L17.62 1.70718L8.91292 10.4143L0.205811 1.70718Z"
-                  fill={`${
-                    controlledProp.inputBtnColor || Style.inputBtnColor
-                  } `}
                 />
               </svg>
             </div>

@@ -1,12 +1,12 @@
 type StyleType = {
-  width: string;
   textSize: string;
   textColor: string;
   bgColorInput: string;
-  bgColorOption: string;
+  // bgColorOption: string;
+  isRounded?: boolean;
   borderColor: string;
-  inputBorderSize: string;
-  optionBorderSize: string;
+  inputBorderSize?: string;
+  optionBorderSize?: string;
   optionListColor: string;
   optionHoverBgColor: string;
   selectedBgColor: string;
@@ -17,25 +17,26 @@ type StyleType = {
   optionBorderColor: string;
   optionHoverTextColor: string;
   defaultBgColor: string;
+  inputShadow?: string;
 };
 
 export const Style: StyleType = {
-  width: "150px",
-  textSize: "text-[5px]",
-  textColor: "text-[#A5A9B5]",
-  bgColorInput: "bg-gray-200",
-  bgColorOption: "bg-gray-200",
-  borderColor: "border-[#92a1b5]",
+  textSize: "text-[1rem]",
+  textColor: "text-black",
+  bgColorInput: "bg-white",
+  // bgColorOption: "bg-gray-200",
+  // isRounded: true,
+  borderColor: "border-gray-400",
   inputBorderSize: "border",
   optionBorderSize: "border",
-  optionListColor: "bg-gray-200",
-  optionHoverBgColor: "hover:bg-red-500",
-  optionHoverTextColor: "hover:text-black",
-  selectedBgColor: "bg-gray-600",
-  selectedTextColor: "text-gray-900",
-  individualRemoveColor: "bg-gray-600",
-  inputBtnColor: "white", //cannot be tailwind color class
-  inputTextColor: "text-black", //cannot be tailwind color class
-  optionBorderColor: "border-red-500",
+  optionListColor: "bg-white",
+  optionHoverBgColor: "hover:bg-blue-600",
+  optionHoverTextColor: "hover:text-white",
+  selectedBgColor: "bg-blue-500",
+  selectedTextColor: "text-white",
+  individualRemoveColor: "fill-white",
+  inputBtnColor: "fill-gray-400",
+  inputTextColor: "text-black",
+  optionBorderColor: "border-gray-300",
   defaultBgColor: "bg-gray-700",
 };

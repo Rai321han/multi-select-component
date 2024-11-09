@@ -18,12 +18,8 @@ export default function NumberInput({
   label,
 }: NumberInputType) {
   return (
-    <div className="flex flex-row gap-[10px] py-3">
-      <p
-        className={`${style?.textColor || "text-white"} ${
-          style?.textSize || "16px"
-        }`}
-      >
+    <div className="flex flex-row  pl-1  max-w-fit">
+      <p className="text-white text-center px-2  bg-slate-700 rounded-l-md">
         {label}
       </p>
       <input
@@ -31,9 +27,7 @@ export default function NumberInput({
         min={1}
         max={20}
         className={`${style?.textColor || "text-white"} 
-            [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-[35px] h-[25px] ${
-              style?.bgColor || "bg-white"
-            } text-center outline-none`}
+            [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-[35px] h-[25px]  text-center outline-none rounded-r-md`}
         value={input}
         onChange={(e) => {
           const inputValue = Number(e.target.value);

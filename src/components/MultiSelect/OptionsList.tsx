@@ -20,7 +20,7 @@ export default function OptionsList() {
           context?.isOpen ? "block" : "hidden"
         } w-full max-h-60 overflow-y-auto  left-0 ${
           userStyle?.optionListColor || Style?.optionListColor
-        } top-[100%] absolute mt-2 rounded-xl shadow-lg ${
+        } top-[100%] absolute mt-2 rounded-xl shadow-xl ${
           userStyle?.optionBorderSize || Style.optionBorderSize
         } ${userStyle?.borderColor || Style.borderColor}`}
       >
