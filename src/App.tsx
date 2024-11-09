@@ -131,15 +131,6 @@ function App() {
           </div>
         </div>
       </div>
-      <button
-        onClick={() => {
-          console.log(tags1);
-          console.log(tags2);
-          console.log(tags3);
-        }}
-      >
-        CLICK ME
-      </button>
     </>
   );
 }

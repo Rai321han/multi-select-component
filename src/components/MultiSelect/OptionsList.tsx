@@ -10,9 +10,7 @@ export default function OptionsList() {
   return (
     <div
       data-tag="list"
-      className={`overflow-hidden text-[${
-        userStyle?.textSize || Style.textSize
-      }]`}
+      className={`overflow-hidden ${userStyle?.textSize || Style.textSize}`}
     >
       <div
         // onBlur={context?.handleClickOpen}
