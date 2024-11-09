@@ -101,11 +101,14 @@ export default function MultiSelect({
   const [optionsList, setOptionsList] = useState(optionsCollection);
   const [inputText, setInputText] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [isLimitExceeded, setIsLimitExceeded] = useState(false);
 
   const handleSelectOption = function (option: Option) {
     if (!controlledProp.isMulti && tags.length === 1) return;
 
     if (tags.length === controlledProp.limit) {
+      setIsLimitExceeded(true);
+
       return;
     }
 
@@ -133,7 +136,7 @@ export default function MultiSelect({
 
   const handleClickRemove = function (tag: Tag) {
     const updatedTags = tags.filter((tagItem) => tagItem.tagId !== tag.tagId);
-
+    setIsLimitExceeded(false);
     if (!tag.isCustom) {
       const updatedOptions = [
         ...optionsList,
@@ -149,6 +152,7 @@ export default function MultiSelect({
   };
 
   const removeAlltags = function () {
+    setIsLimitExceeded(false);
     const updatedOptions: Option[] = [];
     tags.forEach((tag) => {
       if (!tag.isCustom && !tag.isDefault) {
@@ -274,6 +278,11 @@ export default function MultiSelect({
 
   return (
     <SelectContext.Provider value={value}>
+      {isLimitExceeded && (
+        <p className="italic text-red-600 text-sm">
+          can't select more than {controlledProp.limit}
+        </p>
+      )}
       <div
         tabIndex={0}
         onClick={() => {
@@ -307,9 +316,9 @@ export default function MultiSelect({
             >
               {placeHolderTag}
               {tags.length ? renderedTags : ""}
+
               <Input />
             </div>
-
             <div className="flex flex-row items-center gap-[0.3em] justify-center">
               {tags.length > defaultSelected.length ? (
                 <Button onClick={removeAlltags} />

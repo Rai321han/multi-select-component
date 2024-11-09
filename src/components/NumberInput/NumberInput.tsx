@@ -26,7 +26,7 @@ export default function NumberInput({
         type="number"
         min={1}
         max={20}
-        className={`${style?.textColor || "text-white"} 
+        className={`bg-gray-200 ${style?.textColor || "text-white"} 
             [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-[35px] h-[25px]  text-center outline-none rounded-r-md`}
         value={input}
         onChange={(e) => {

@@ -18,6 +18,7 @@ type StyleType = {
   optionHoverTextColor: string;
   defaultBgColor: string;
   inputShadow?: string;
+  placeholderColor: string;
 };
 
 export const Style: StyleType = {
@@ -27,6 +28,7 @@ export const Style: StyleType = {
   // bgColorOption: "bg-gray-200",
   // isRounded: true,
   borderColor: "border-gray-400",
+  placeholderColor: "placeholder-gray-400",
   inputBorderSize: "border",
   optionBorderSize: "border",
   optionListColor: "bg-white",
@@ -38,5 +40,5 @@ export const Style: StyleType = {
   inputBtnColor: "fill-gray-400",
   inputTextColor: "text-black",
   optionBorderColor: "border-gray-300",
-  defaultBgColor: "bg-gray-700",
+  defaultBgColor: "bg-gray-400",
 };

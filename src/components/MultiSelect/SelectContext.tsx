@@ -29,7 +29,7 @@ type controlledPropType = {
   isSearchable?: boolean;
   // color properties
   width?: string;
-  placeholder?: string;
+  placeholderColor?: string;
   textSize?: string;
   textColor?: string;
   selectedTextColor?: string;

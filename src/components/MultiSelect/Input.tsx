@@ -17,7 +17,9 @@ export default function Input() {
   return (
     <input
       type="text"
-      className={`w-[20px] flex flex-grow outline-none px-1 bg-transparent 
+      className={`${
+        context?.controlledProp.placeholderColor || Style.placeholderColor
+      } w-[20px] flex flex-grow outline-none px-1 bg-transparent 
         tracking-wide ${
           context?.controlledProp.inputTextColor || Style.inputTextColor
         }`}
