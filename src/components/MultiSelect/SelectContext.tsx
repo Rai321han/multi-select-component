@@ -8,6 +8,8 @@ type ContextType = {
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>;
   setInputText: React.Dispatch<React.SetStateAction<string>>;
   inputText: string;
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
   controlledProp: controlledPropType;
   handleSelectOption: (option: Option) => void;
   handleClickRemove: (tag: Tag) => void;

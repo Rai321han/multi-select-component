@@ -1,16 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CreateAbleObject } from "./utils";
 // import { SelectContext } from "./MultiSelect";
 import SingleListItem from "./SingleListItem";
 import NoOption from "./NoOption";
 import { SelectContext } from "./SelectContext";
+import useDebounce from "./hooks/useDebounce";
 
 export default function OptionsListItems() {
   const context = useContext(SelectContext);
+  const debouncedText = useDebounce(context?.searchText || "", 250);
+  const [searchText, setSearchText] = useState("");
+  useEffect(() => {
+    setSearchText(debouncedText);
+  }, [debouncedText]);
 
   const renderedOptions: JSX.Element[] = [];
   context?.optionsList.forEach((option) => {
-    if (context?.inputText === "")
+    if (searchText === "")
       renderedOptions.push(
         <SingleListItem
           option={option}
@@ -18,9 +24,7 @@ export default function OptionsListItems() {
           key={option.id}
         />
       );
-    else if (
-      option.value.toLowerCase().startsWith(context.inputText.toLowerCase())
-    ) {
+    else if (option.value.toLowerCase().startsWith(searchText.toLowerCase())) {
       renderedOptions.push(
         <SingleListItem
           option={option}
@@ -34,10 +38,10 @@ export default function OptionsListItems() {
   if (
     context?.controlledProp.isCreateable &&
     renderedOptions.length === 0 &&
-    context?.inputText !== ""
+    searchText !== ""
   ) {
-    if (!context?.inputText) return;
-    const createableOption = CreateAbleObject(context?.inputText);
+    if (!searchText) return;
+    const createableOption = CreateAbleObject(searchText);
     renderedOptions.push(
       <SingleListItem
         option={createableOption}
@@ -47,7 +51,7 @@ export default function OptionsListItems() {
       />
     );
   } else if (renderedOptions.length === 0) {
-    renderedOptions.push(<NoOption />);
+    renderedOptions.push(<NoOption key={crypto.randomUUID()} />);
   }
 
   return <ul className="tracking-wide listParent">{renderedOptions}</ul>;

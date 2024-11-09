@@ -99,6 +99,7 @@ export default function MultiSelect({
   const [isOpen, setIsOpen] = useState(false);
   const [optionsList, setOptionsList] = useState(optionsCollection);
   const [inputText, setInputText] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   const handleSelectOption = function (option: Option) {
     if (!controlledProp.isMulti && tags.length === 1) return;
@@ -125,6 +126,7 @@ export default function MultiSelect({
       setOptionsList(updatedOptions);
     }
     setInputText("");
+    setSearchText("");
     setTags(updatedTags);
   };
 
@@ -162,6 +164,7 @@ export default function MultiSelect({
     const updatedTags = tags.filter((tag) => tag.isDefault === true);
     setTags(updatedTags);
     setInputText("");
+    setSearchText("");
   };
 
   let placeHolderTag: JSX.Element | null;
@@ -250,6 +253,8 @@ export default function MultiSelect({
     setTags,
     inputText,
     setInputText,
+    searchText,
+    setSearchText,
     controlledProp,
     handleSelectOption,
     handleClickRemove,

@@ -1,6 +1,6 @@
 export function CreateAbleObject(text: string) {
   return {
-    id: Date.now(),
+    id: crypto.randomUUID(),
     value: text,
     isCustom: true,
   };
